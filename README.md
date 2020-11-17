@@ -10,6 +10,16 @@ Requirements:
 * Connect database (employee)
 * Create table if not exist (employees)
 * Insert data
+'''
+import mysql.connector
+mydb = mysql.connector.connect(
+    host='127.0.0.1', 
+    user='root', 
+    password='twi@mysql',
+    database="employee",
+    use_pure = True
+)
+mycursor = mydb.cursor()
 
 mycursor.execute("CREATE TABLE IF NOT EXISTS employees ( EMPLOYEE_ID INT AUTO_INCREMENT PRIMARY KEY, NAME varchar(20) DEFAULT NULL, GENDER varchar(25) NOT NULL, SALARY decimal(8,2) DEFAULT NULL)")
 
@@ -30,7 +40,7 @@ val = [
 mycursor.executemany(Data, val)
 mydb.commit()
 print(mycursor.rowcount, "was inserted.")
-
+'''
 
 ### Display_Records.py
 We will use one tkinter entry component to display each data in the window. 
