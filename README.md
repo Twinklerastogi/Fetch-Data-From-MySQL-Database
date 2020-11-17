@@ -10,7 +10,7 @@ Requirements:
 * Connect database (employee)
 * Create table if not exist (employees)
 * Insert data
-'''
+`
 import mysql.connector
 mydb = mysql.connector.connect(
     host='127.0.0.1', 
@@ -40,7 +40,7 @@ val = [
 mycursor.executemany(Data, val)
 mydb.commit()
 print(mycursor.rowcount, "was inserted.")
-'''
+`
 
 ### Display_Records.py
 We will use one tkinter entry component to display each data in the window. 
