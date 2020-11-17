@@ -10,10 +10,8 @@ Requirements:
 * Connect database (employee)
 * Create table if not exist (employees)
 * Insert data
-# Create table if not exist
-mycursor.execute("CREATE TABLE IF NOT EXISTS employees ( EMPLOYEE_ID INT AUTO_INCREMENT PRIMARY KEY, NAME varchar(20) DEFAULT NULL, GENDER varchar(25) NOT NULL, SALARY decimal(8,2) DEFAULT NULL)")
 
-#Insert Data
+mycursor.execute("CREATE TABLE IF NOT EXISTS employees ( EMPLOYEE_ID INT AUTO_INCREMENT PRIMARY KEY, NAME varchar(20) DEFAULT NULL, GENDER varchar(25) NOT NULL, SALARY decimal(8,2) DEFAULT NULL)")
 
 mycursor = mydb.cursor()
 
@@ -53,8 +51,6 @@ my_connect = mysql.connector.connect(
 )
 my_conn = my_connect.cursor()
 
-####### end of connection ####
-
 my_conn.execute("SELECT * FROM employees limit 0,10")
 i=0 
 for emp in my_conn: 
@@ -84,16 +80,13 @@ my_connect = mysql.connector.connect(
     use_pure = True
 )
 my_cursor = my_connect.cursor()
-####### end of connection ####
 
 my_w = tk.Tk()
 my_w.geometry("400x200") 
 
-# add one Label 
 l1 = tk.Label(my_w,  text='Enter Employee ID: ', width=25 )  
 l1.grid(row=1,column=1) 
 
-# add one text box
 t1 = tk.Text(my_w,  height=1, width=4,bg='yellow') 
 t1.grid(row=1,column=2) 
 
@@ -102,7 +95,7 @@ b1 = tk.Button(my_w, text='Show Details', width=15,bg='red',
 b1.grid(row=1,column=4) 
 
 my_str = tk.StringVar()
-# add one Label 
+
 l2 = tk.Label(my_w,  textvariable=my_str, width=30,fg='red' )  
 l2.grid(row=3,column=1,columnspan=2) 
 
@@ -110,7 +103,7 @@ my_str.set("Output")
 
 def my_details(id):
     try:
-        val = int(id) # check input is integer or not
+        val = int(id) 
         try:
             my_cursor.execute("SELECT * FROM employees WHERE EMPLOYEE_ID="+str(id))
             employees = my_cursor.fetchone()
